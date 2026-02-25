@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xeración Reserva - Presentación Directiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow: hidden;
+            background-color: #f0f4f1;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .slide {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            padding: 4rem;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .bg-reserva-gradient {
+            background: linear-gradient(135deg, #2d5a27 0%, #1e3a5f 100%);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .nav-btn {
+            position: fixed;
+            bottom: 2rem;
+            background: #2d5a27;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        #prevBtn { left: 2rem; }
+        #nextBtn { right: 2rem; }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: #a3c9a8;
+            z-index: 101;
+            transition: width 0.3s ease;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.2rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Slide 1: Portada -->
+    <div class="slide active bg-reserva-gradient text-white text-center">
+        <h1 class="text-6xl font-bold mb-4">Xeración Reserva</h1>
+        <h2 class="text-2xl font-light mb-8">Coñecer para Conservar</h2>
+        <div class="w-24 h-1 bg-white mx-auto mb-8"></div>
+        <p class="text-xl max-w-2xl mx-auto italic">
+            "Un programa de innovación educativa deseñado para o territorio da Reserva da Biosfera Río Eo, Oscos e Terras de Burón."
+        </p>
+        <div class="mt-12 flex justify-center gap-8">
+            <span class="flex items-center gap-2"><i class="fas fa-mountain"></i> Asturias</span>
+            <span class="text-xl">|</span>
+            <span class="flex items-center gap-2"><i class="fas fa-water"></i> Galicia</span>
+        </div>
+    </div>
+
+    <!-- Slide 2: O Corazón do Proxecto (NUEVA) -->
+    <div class="slide bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-green-800 mb-12 border-b-2 border-green-200 pb-4">O Corazón do Proxecto</h2>
+            <div class="space-y-8">
+                <div class="flex items-start gap-6 p-6 rounded-xl hover:bg-green-50 transition-colors">
+                    <div class="bg-green-600 text-white p-4 rounded-full text-2xl"><i class="fas fa-eye"></i></div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">Coñecer para Valorar</h3>
+                        <p class="text-lg text-slate-600">Ninguén protexe o que non coñece. O primeiro paso é que o alumnado descubra a riqueza natural e cultural que o rodea, transformando o "paisaxe habitual" nun patrimonio de valor incalculable.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6 p-6 rounded-xl hover:bg-blue-50 transition-colors">
+                    <div class="bg-blue-600 text-white p-4 rounded-full text-2xl"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">Protexer como Responsabilidade</h3>
+                        <p class="text-lg text-slate-600">A Reserva non é un museo estático, é un ecosistema vivo. O proxecto fomenta a protección activa a través da cidadanía comprometida, entendendo que o futuro do noso rural depende da nosa capacidade de xestión hoxe.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6 p-6 rounded-xl hover:bg-yellow-50 transition-colors">
+                    <div class="bg-yellow-600 text-white p-4 rounded-full text-2xl"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">Unha Necesidade Urxente</h3>
+                        <p class="text-lg text-slate-600">Nun mundo cada vez máis globalizado e desconectado da terra, hoxe é máis necesario ca nunca formar unha xeración capaz de unir a innovación coas súas raíces para facer fronte aos retos ambientais e demográficos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: O Porqué -->
+    <div class="slide">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-green-800 mb-12 border-b-2 border-green-200 pb-4">Por que este proxecto?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card">
+                    <i class="fas fa-link text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Identidade Rural</h3>
+                    <p>Reconectar á mocidade co seu contorno para frear o desarraigo territorial.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-bullhorn text-4xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Competencias</h3>
+                    <p>Desenvolvemento real de oratoria, pensamento crítico e traballo cooperativo.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-hand-holding-heart text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Aliñamento</h3>
+                    <p>Cumprimento íntegro dos novos criterios de avaliación LOMLOE.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Estrutura Curricular -->
+    <div class="slide bg-slate-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-slate-800 mb-8">Integración Curricular (3º/4º ESO)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+                    <div class="bg-green-100 p-3 rounded-full text-green-700 font-bold">BG</div>
+                    <div>
+                        <h4 class="font-bold">Bioloxía e Xeoloxía</h4>
+                        <p class="text-sm">Ecosistemas, impacto humano e biodiversidade local.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+                    <div class="bg-blue-100 p-3 rounded-full text-blue-700 font-bold">XH</div>
+                    <div>
+                        <h4 class="font-bold">Xeografía e Historia</h4>
+                        <p class="text-sm">Paisaxe humanizada, demografía e desenvolvemento rural.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+                    <div class="bg-purple-100 p-3 rounded-full text-purple-700 font-bold">LG</div>
+                    <div>
+                        <h4 class="font-bold">Lingua e Literatura</h4>
+                        <p class="text-sm">Comunicación oral, oratoria e textos expositivos.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm">
+                    <div class="bg-yellow-100 p-3 rounded-full text-yellow-700 font-bold">EV</div>
+                    <div>
+                        <h4 class="font-bold">Educación en Valores</h4>
+                        <p class="text-sm">Gobernanza ambiental e cidadanía activa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: O Role Play -->
+    <div class="slide">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl font-bold text-green-800 mb-6">O Consello da Reserva</h2>
+                <p class="text-lg mb-6">Unha simulación de debate real onde o alumnado enfróntase aos retos do territorio desde diferentes perspectivas.</p>
+                <div class="flex flex-wrap">
+                    <span class="role-badge bg-green-200 text-green-800">Dirección da Reserva</span>
+                    <span class="role-badge bg-blue-200 text-blue-800">Alcaldía local</span>
+                    <span class="role-badge bg-yellow-200 text-yellow-800">Sector Gandeiro</span>
+                    <span class="role-badge bg-orange-200 text-orange-800">Empresa Turística</span>
+                    <span class="role-badge bg-red-200 text-red-800">Asociación Ecoloxista</span>
+                </div>
+            </div>
+            <div class="card bg-green-50 border-l-8 border-green-600">
+                <h3 class="font-bold text-xl mb-4">Que aprenden?</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-600"></i> Empatía co contorno</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-600"></i> Resolución de conflitos</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-600"></i> Capacidade de negociación</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: O Alumno como Guía -->
+    <div class="slide bg-reserva-gradient text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">De espectador a protagonista</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="text-left">
+                    <h3 class="text-2xl font-bold mb-4">Caderno do Alumno</h3>
+                    <p class="font-light">Material didáctico estruturado para que o alumno deseñe a súa propia ruta e explicación do patrimonio.</p>
+                </div>
+                <div class="text-left">
+                    <h3 class="text-2xl font-bold mb-4">Micro-explicacións</h3>
+                    <p class="font-light">Reto de oratoria: 3 minutos para convencer sobre a importancia dun elemento da paisaxe.</p>
+                </div>
+            </div>
+            <div class="mt-12 p-8 bg-white/10 rounded-xl backdrop-blur-md">
+                <p class="text-xl italic">"Convertemos o territorio nunha aula aberta sen paredes."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Avaliación -->
+    <div class="slide">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-bold text-slate-800 mb-12">Avaliación e Rigor Académico</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="font-bold mb-4"><i class="fas fa-chart-line text-green-600"></i> Indicadores de Impacto</h3>
+                    <ul class="text-sm space-y-2">
+                        <li>• Cuestionarios PRE e POST coñecemento.</li>
+                        <li>• Escala Likert de percepción territorial.</li>
+                        <li>• Enquisa de satisfacción global.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="font-bold mb-4"><i class="fas fa-table text-blue-600"></i> Rúbricas Competenciais</h3>
+                    <ul class="text-sm space-y-2">
+                        <li>• Avaliación de expresión oral.</li>
+                        <li>• Análise de conciencia ambiental.</li>
+                        <li>• Desempeño en traballo cooperativo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Calendario -->
+    <div class="slide">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-green-800 mb-12">Folla de Ruta suxerida</h2>
+            <div class="flex justify-between items-center relative">
+                <div class="absolute w-full h-1 bg-green-200 -z-10"></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-green-500 w-1/4">
+                    <h4 class="font-bold">T1</h4>
+                    <p class="text-xs">Formación e Role Play</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-blue-500 w-1/4">
+                    <h4 class="font-bold">T2</h4>
+                    <p class="text-xs">Saída de Campo</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-t-4 border-orange-500 w-1/4">
+                    <h4 class="font-bold">T3</h4>
+                    <p class="text-xs">Propostas e Avaliación</p>
+                </div>
+            </div>
+            <div class="mt-20">
+                <p class="text-xl font-bold text-slate-600">Falamos de como implementalo no seu centro?</p>
+                <p class="text-green-700">julio@xesteco.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controles -->
+    <button id="prevBtn" class="nav-btn"><i class="fas fa-arrow-left"></i></button>
+    <button id="nextBtn" class="nav-btn"><i class="fas fa-arrow-right"></i></button>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        let currentSlide = 0;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+
+        // Soporte teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                if (currentSlide < slides.length - 1) { currentSlide++; updateSlide(); }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentSlide > 0) { currentSlide--; updateSlide(); }
+            }
+        });
+
+        updateSlide();
+    </script>
+</body>
+</html>
